@@ -1,12 +1,6 @@
 import pandas as pd
 from sklearn.datasets import load_digits
-import matplotlib.pyplot as plt
-import numpy as np
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import confusion_matrix
-import matplotlib.pyplot as plt
-import seaborn as sns
+
 
 # images data  target
 digits = load_digits()
@@ -23,8 +17,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 knn = KNeighborsClassifier(n_neighbors=3)
 knn.fit(X_train, y_train)
 
-# Print the accuracy
+import joblib
+joblib.dump(knn,'knn.plk')
+# # Print the accuracy
 print(knn.score(X_test, y_test))
-# print(X[0].reshape(1,-1))
-c = knn.predict(X[1010].reshape(1,-1))
-print(c)
+
